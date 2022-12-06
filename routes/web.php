@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', function () {
+    return view('home');
+})->name('dashboard');
+
+Route::get('/customers', function () {
+    return view('pages.clientes.customers');
+})->name('customers');
+
+Route::get('/suppliers', function () {
+    return view('pages.fornecedores.fornecedores');
+})->name('fornecedores');
+
+Route::get('/cost-center', function () {
+    return view('pages.centro-custos.centro-custo');
+})->name('centro-custo');
+
+Route::get('/payment-way', function () {
+    return view('pages.formas-pagamento.formas-pagamento');
+})->name('forma-pagamento');
+
+Route::get('/bill-to-pay', function () {
+    return view('pages.contas-pagar.conta-pagar');
+})->name('conta-pagar');
+
+Route::get('/bills-planning', function () {
+    return view('pages.plano-contas.plano-contas');
+})->name('plano-contas');
+
+Route::get('/customers/formulario/{id?}', function () {
+    return view('pages.clientes.form_customers');
+})->name('form_customers');
