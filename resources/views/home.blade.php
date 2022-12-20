@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Clientes')
+@section('title', 'Gestão - Pronace')
 
 @section('content_header')
 <div class="container-fluid text-navy">
