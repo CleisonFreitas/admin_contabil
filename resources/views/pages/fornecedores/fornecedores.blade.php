@@ -10,7 +10,7 @@
                 <hr>
                 <div class="form-group row pt-2">
                     <div class="col-12 col-md-3 col-lg-3">
-                        <button class="btn btn-outline-info mb-2" id="novo-cadastro"><i class="fas fa-plus-circle mx-2"></i>Cadastrar novo fornecedor</button>
+                        <button class="btn bg-purple btn-outline-light mb-2" id="novo-cadastro"><i class="fas fa-plus-circle mx-2"></i>Cadastrar novo fornecedor</button>
                     </div>
                     <div class="col-12 col-md-8 col-lg-8">
                         <div class="input-group mb-3">
@@ -33,7 +33,7 @@
 @stop
 @section('content')
     <div class="container-fluid text-secondary pb-3">
-        <div class="card card-hide" id="card-hide">
+        <div class="card card-invisible" id="content-card">
             <div class="card-header">
                 <h4>Cadastro de Fornecedores</h4>
             </div>
@@ -251,14 +251,14 @@
                         <div class="col-12 col-md-12 col-lg-12">
                             <button
                                 type="submit"
-                                class="btn btn-outline-success">
+                                class="btn bg-purple btn-outline-light">
                                 <i class="fas fa-save mx-2"></i>
                                 Salvar
                             </button>
                             <button
                                 type="reset"
                                 onclick="cancelarRegistro();"
-                                class="btn btn-outline-danger">
+                                class="btn bg-navy btn-outline-light">
                                 <i class="fas fa-eraser mx-2"></i>
                                 Cancelar
                             </button>
@@ -266,6 +266,58 @@
                     </div>
 
                 </form>
+            </div>
+        </div>
+
+        <!-- Tabela de Fornecedores -->
+        <div class="card" id="table-card">
+            <div class="card-body" id="table-content">
+                <h4>Lista de fornecedores cadastrados</h4>
+                <hr>
+                <div class="form-group row">
+                    <div class="col-12 col-sm-6 col-lg-6">
+                        <input
+                            type="text"
+                            name=""
+                            id="buscaConteudo"
+                            class="form-control"
+                            placeholder="Digite o nome do fornecedor..."
+                        >
+                    </div>
+                    <div class="col-6 col-sm-3 col-lg-3">
+                        <input
+                            type="date"
+                            name=""
+                            id=""
+                            class="form-control"
+                        >
+                    </div>
+                    <div class="col-6 col-sm-3 col-lg-3">
+                        <input
+                            type="date"
+                            name=""
+                            id=""
+                            class="form-control"
+                        >
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead class="text-purple">
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Cep</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-content">
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
@@ -280,35 +332,6 @@
 @stop
 
 @section('js')
-    <script>
-        const $ = document.querySelector.bind(document);
-        let address = $('#address-tab');
-        let geral = $('#geral-tab');
-        const changeGeral = () => {
-            return (
-                geral.classList.add('bg-navy'),
-                address.classList.remove('bg-navy')
-            );
-        }
-        const changeAddress = () => {
-            return (
-                address.classList.add('bg-navy'),
-                geral.classList.remove('bg-navy')
-            );
-        }
-
-        /* Adicionando novo Fornecedor */
-        let novoCadastro = $("#novo-cadastro");
-        let hideContent = $("#card-hide");
-        novoCadastro.addEventListener("click", () => {
-            hideContent.classList.remove("card-hide");
-        });
-
-        /* Cancelando Cadastro */
-        const cancelarRegistro = () => {
-            return (
-               hideContent.classList.add("card-hide")
-            );
-        }
-    </script>
+<script src={{ asset('js/main.js') }}></script>
+<script src={{ asset('js/views/fornecedores/fornecedores.js') }} type="module"></script>
 @stop
