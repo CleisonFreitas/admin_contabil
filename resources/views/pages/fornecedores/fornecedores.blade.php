@@ -6,25 +6,12 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h4>Fornecedores</h4>
-                <hr>
-                <div class="form-group row pt-2">
-                    <div class="col-12 col-md-3 col-lg-3">
-                        <button class="btn bg-purple btn-outline-light mb-2" id="novo-cadastro"><i class="fas fa-plus-circle mx-2"></i>Cadastrar novo fornecedor</button>
+                <div class="row">
+                    <div class="col-12 col-md-9 col-lg-9">
+                        <h4>Fornecedores</h4>
                     </div>
-                    <div class="col-12 col-md-8 col-lg-8">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-navy" id="search_label"><i class="fas fa-search text-white"></i></span>
-                            </div>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Pesquisar por fornecedor..."
-                                aria-label="Pesquisar por fornecedor..."
-                                aria-describedby="search_label"
-                            >
-                        </div>
+                    <div class="col-12 col-md-3 col-lg-3">
+                        <button class="btn bg-purple btn-outline-light flex justify-self-end" id="novo-cadastro"><i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro</button>
                     </div>
                 </div>
             </div>
@@ -38,7 +25,7 @@
                 <h4>Cadastro de Fornecedores</h4>
             </div>
             <div class="card-body bg-light shadow">
-                <form onsubmit="handleSubmit();" class="form">
+                <form id="form" class="form">
                     <ul class="nav nav-tabs mb-3 nav-filter" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                           <button class="nav-link bg-navy active" onclick="changeGeral();" id="geral-tab" data-toggle="tab" data-target="#geral" type="button" role="tab" aria-controls="geral" aria-selected="true"><i class="fas fa-folder-open mx-1"></i>Geral</button>
@@ -54,32 +41,36 @@
                                     <label for="nome">Nome*</label>
                                     <input
                                         type="text"
-                                        name="nome"
+                                        name="nm_fornecedor"
                                         id="nome"
+                                        value=""
                                         class="form-control input"
                                         placeholder="Digite seu nome completo"
-                                        required
                                     >
+                                    <small class="text-danger msg-erro--nm_fornecedor"></small>
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-12 col-md-3 col-lg-3 pt-2">
-                                    <label for="cnpj">CNPJ</label>
+                                    <label for="cnpj">CNPJ*</label>
                                     <input
                                         type="text"
-                                        name="cnpj"
-                                        id="cnpj"
+                                        name="nr_cnpj"
+                                        id="nr_cnpj"
+                                        value=""
                                         class="form-control"
                                         placeholder="Coloque apenas digitos"
                                     >
+                                    <small class="text-danger msg-erro--nr_cnpj mb-0"></small>
                                 </div>
                                 <div class="col-12 col-md-3 col-lg-3 pt-2">
                                     <label for="cpf">CPF</label>
                                     <input
                                         type="text"
-                                        name="cpf"
-                                        id="cpf"
+                                        name="nr_cpf"
+                                        id="nr_cpf"
+                                        value=""
                                         class="form-control"
                                         placeholder="Coloque apenas digitos"
                                     >
@@ -90,6 +81,7 @@
                                         type="text"
                                         name="ins_estadual"
                                         id="ins_estadual"
+                                        value=""
                                         class="form-control"
                                         placeholder="Coloque apenas digitos"
                                     >
@@ -100,6 +92,7 @@
                                         type="text"
                                         name="ins_municipal"
                                         id="ins_municipal"
+                                        value=""
                                         class="form-control"
                                         placeholder="Coloque apenas digitos"
                                     >
@@ -119,6 +112,8 @@
                                             class="form-control"
                                             placeholder="E-mail"
                                             aria-label="E-mail"
+                                            id="email"
+                                            value=""
                                             aria-describedby="email_label"
                                         >
                                     </div>
@@ -127,8 +122,9 @@
                                     <input
                                         type="text"
                                         name="observações"
-                                        id="observacoes"
+                                        id="observacao"
                                         class="form-control"
+                                        value=""
                                         placeholder="Observações"
                                     >
                                 </div>
@@ -143,6 +139,8 @@
                                         <input
                                             type="text"
                                             class="form-control"
+                                            id="telefone"
+                                            value=""
                                             placeholder="Telefone(Fixo)"
                                             aria-label="Telefone(Fixo)"
                                             aria-describedby="telefone_label"
@@ -158,6 +156,8 @@
                                             type="text"
                                             class="form-control"
                                             placeholder="Celular"
+                                            id="celular"
+                                            value=""
                                             aria-label="Celular"
                                             aria-describedby="celular_label"
                                         >
@@ -172,6 +172,8 @@
                                             type="text"
                                             class="form-control"
                                             placeholder="WhatsApp"
+                                            id="whatsapp"
+                                            value=""
                                             aria-label="WhatsApp"
                                             aria-describedby="whatsapp_label"
                                         >
@@ -184,7 +186,13 @@
                             <div class="form-group row">
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <label for="cep">CEP*</label>
-                                    <input type="text" name="cep" id="cep" class="form-control" placeholder="Coloque apenas dígitos">
+                                    <input type="text"
+                                        name="cep"
+                                        id="cep"
+                                        value=""
+                                        class="form-control"
+                                        placeholder="Coloque apenas dígitos"
+                                        onblur="BuscaCEP();">
                                 </div>
                             </div>
 
@@ -195,6 +203,7 @@
                                         type="text"
                                         name="logradouro"
                                         id="logradouro"
+                                        value=""
                                         class="form-control"
                                         placeholder="Endereço/Localização"
                                     >
@@ -205,6 +214,7 @@
                                         type="text"
                                         name="numero"
                                         id="numero"
+                                        value=""
                                         class="form-control"
                                         placeholder="Apenas números"
                                     >
@@ -218,6 +228,7 @@
                                         type="text"
                                         name="bairro"
                                         id="bairro"
+                                        value=""
                                         class="form-control"
                                         placeholder="Digite o bairro"
                                     >
@@ -228,6 +239,7 @@
                                         type="text"
                                         name="cidade"
                                         id="cidade"
+                                        value=""
                                         class="form-control"
                                         placeholder="Digite a cidade"
                                     >
@@ -238,6 +250,7 @@
                                         type="text"
                                         name="uf"
                                         id="uf"
+                                        value=""
                                         class="form-control"
                                         placeholder="UF"
                                     >
@@ -303,13 +316,14 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-sm table-striped">
                         <thead class="text-purple">
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
                                 <th>Cep</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-content">
@@ -332,6 +346,9 @@
 @stop
 
 @section('js')
+<script src={{ asset('js/util/sweetalert2.all.min.js') }}></script>
 <script src={{ asset('js/main.js') }}></script>
-<script src={{ asset('js/views/fornecedores/fornecedores.js') }} type="module"></script>
+<script src={{ asset('js/controllers/fornecedor/CriaFornecedor.js') }} type="module"></script>
+<script src={{ asset('js/controllers/fornecedor/ListFornecedor.js') }} type="module"></script>
+<script src={{ asset('js/controllers/fornecedor/EditFornecedor.js') }} type="module"></script>
 @stop

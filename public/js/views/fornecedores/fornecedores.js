@@ -24,10 +24,9 @@ tableContent.appendChild(tableAvisoFornecedor);
 
 const dados = await FornecedorController.getAll();
 
-if(dados.length > 0) {
+if (dados.length > 0) {
     tableContent.removeChild(tableAvisoFornecedor);
     dados.forEach(item => {
-        console.log(item)
         let contentTR = document.createElement("tr");
         let contentBody = $("#tbody-content");
         let documento = `
@@ -35,11 +34,39 @@ if(dados.length > 0) {
             <td>${item.email}</td>
             <td>${item.telefone}</td>
             <td>${item.celular}</td>
+            <td>
+                <button
+                    class='btn btn-outline-light btn-sm bg-purple buttonEdit'
+                    value=${item.id}
+                    >
+                    Editar
+                </button>
+                <button
+                    class='btn btn-outline-light btn-sm bg-navy'
+                    onclick='ExcluirForn(${item.id})'>
+                    Excluir
+                </button>
+                ${item.id}
+            </td>
         `;
         contentTR.innerHTML = documento;
         contentBody.appendChild(contentTR);
+
     })
 
 }
+/*
+let btnEdit = document.querySelector(".buttonEdit");
+
+    btnEdit.addEventListener("click", async (e) => {
+        const thisOne = await FornecedorController.getOne(e.target.value);
+        console.log(thisOne)
+    })
+
+*/
+
+
+
+
 
 

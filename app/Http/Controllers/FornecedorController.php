@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedores\Fornecedor;
 use Illuminate\Http\Request;
 
@@ -35,13 +36,13 @@ class FornecedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FornecedorRequest $request)
     {
         try{
             $fornecedor = Fornecedor::create($request->all());
             return response()->json(['fornecedor' => $fornecedor],201);
         }catch(\Exception $ex) {
-            return response()->json(['erros' => $ex->getMessage(),404]);
+            return response()->json(['erros' => [$ex->getMessage()],404]);
         }
     }
 
@@ -53,18 +54,12 @@ class FornecedorController extends Controller
      */
     public function show(Fornecedor $fornecedor)
     {
-        //
-    }
+        try{
+            return response()->json(['fornecedor' => $fornecedor],200);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Fornecedores\Fornecedor  $fornecedor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Fornecedor $fornecedor)
-    {
-        //
+        }catch(\Exception $ex) {
+            return response()->json(['error' => [$ex->getMessage()]],404);
+        }
     }
 
     /**
@@ -76,7 +71,14 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, Fornecedor $fornecedor)
     {
-        //
+        try{
+            $fornecedor->update($request->all());
+
+            return response()->json(['fornecedor' => $fornecedor],200);
+
+        }catch(\Exception $ex) {
+            return response()->json(['error' => $ex->getMessage()],204);
+        }
     }
 
     /**
