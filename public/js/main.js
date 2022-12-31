@@ -16,27 +16,3 @@ const cancelarRegistro = () => {
     tabela.classList.remove('card-invisible')
 }
 newRegistro.addEventListener("click", AdicionarRegistro);
-
-// Api para busca de CEPs
-
-let logradouro = $("#logradouro");
-let bairro = $("#bairro");
-let cidade = $("#cidade");
-let uf = $("#uf")
-const BuscaCEP = async () => {
-    let cep = $("#cep").value;
-    return await fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(response => response.json())
-        .then(result => {
-            if (result.erro) {
-                throw Error('Cep não encontrado! Por favor, verifique se foi digitado corretamente e se existe')
-            }
-            logradouro.value = result.logradouro;
-            bairro.value = result.bairro;
-            cidade.value = result.localidade;
-            uf.value = result.uf;
-        })
-        .catch(erro => {
-            alert(erro)
-        });
-}

@@ -3,47 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FornecedorRequest;
-use App\Models\Fornecedores\Fornecedor;
 use Illuminate\Http\Request;
+use App\Models\Fornecedores\Fornecedor;
 
-class FornecedorController extends Controller
+class FornecedorController extends AbstractController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function __construct()
     {
-        try{
-            $query = $request->q ?? "";
-            $page = $request->page ?? 1;
-            $per_page = $request->per_page ?? 10;
-            $sort = $request->sort ?? 'id';
-            $order = $request->order ?? 'desc';
-
-            $fornecedores = Fornecedor::listAll($query,$page,$per_page,$sort,$order);
-
-            return response()->json($fornecedores,200);
-        }catch(\Exception $ex) {
-            return response()->json(['error' => $ex->getMessage()],404);
-        }
+        $this->model = Fornecedor::class;
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\FornecedorRequest  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(FornecedorRequest $request)
     {
-        try{
-            $fornecedor = Fornecedor::create($request->all());
-            return response()->json(['fornecedor' => $fornecedor],201);
-        }catch(\Exception $ex) {
-            return response()->json(['erros' => [$ex->getMessage()],404]);
-        }
+        return $this->create($request);
     }
 
     /**
@@ -52,33 +31,23 @@ class FornecedorController extends Controller
      * @param  \App\Models\Fornecedores\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
+
     public function show(Fornecedor $fornecedor)
     {
-        try{
-            return response()->json(['fornecedor' => $fornecedor],200);
-
-        }catch(\Exception $ex) {
-            return response()->json(['error' => [$ex->getMessage()]],404);
-        }
+        return $this->fetch($fornecedor);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\FornecedorRequest  $request
      * @param  \App\Models\Fornecedores\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fornecedor $fornecedor)
+
+    public function update(FornecedorRequest $request, Fornecedor  $fornecedor)
     {
-        try{
-            $fornecedor->update($request->all());
-
-            return response()->json(['fornecedor' => $fornecedor],200);
-
-        }catch(\Exception $ex) {
-            return response()->json(['error' => $ex->getMessage()],204);
-        }
+        return $this->up($request, $fornecedor);
     }
 
     /**
@@ -89,6 +58,6 @@ class FornecedorController extends Controller
      */
     public function destroy(Fornecedor $fornecedor)
     {
-        //
+        return $this->delete($fornecedor);
     }
 }

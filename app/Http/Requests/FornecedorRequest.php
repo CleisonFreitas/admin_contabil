@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Validation\Rule;
 
-class FornecedorRequest extends Request
+class FornecedorRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +22,12 @@ class FornecedorRequest extends Request
      */
     public function rules()
     {
-        return [
-            'nm_fornecedor' => ['bail','required','string'],
-            'nr_cnpj' => ['bail','required','digits:14',Rule::unique('nr_cnpj')->ignore($this->fornecedor)->whereNull('deleted_at')]
-        ];
+        if ($this->method() !== "GET") {
+            return [
+                'nm_fornecedor' => ['bail', 'required', 'string'],
+                'nr_cnpj' => ['bail', 'required', 'digits:14', Rule::unique('fornecedores')->ignore($this->fornecedor)->whereNull('deleted_at')]
+            ];
+        }
     }
 
     public function attributes()
@@ -36,4 +37,5 @@ class FornecedorRequest extends Request
             'nr_cnpj' => 'CNPJ',
         ];
     }
+
 }

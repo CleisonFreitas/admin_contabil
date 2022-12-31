@@ -8,7 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class Request extends FormRequest
+class BaseRequest extends FormRequest
 {
  /**
   * Handle a failed validation attempt.

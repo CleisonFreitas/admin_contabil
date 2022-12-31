@@ -21,10 +21,9 @@
 @section('content')
     <div class="container-fluid text-secondary pb-3">
         <div class="card card-invisible" id="content-card">
-            <div class="card-header">
+            <div class="card-body" id="content-card">
                 <h4>Cadastro de Fornecedores</h4>
-            </div>
-            <div class="card-body bg-light shadow">
+                <hr>
                 <form id="form" class="form">
                     <ul class="nav nav-tabs mb-3 nav-filter" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -347,6 +346,7 @@
 
 @section('js')
 <script src={{ asset('js/util/sweetalert2.all.min.js') }}></script>
+<script src={{ asset('js/services/BuscaCep.js') }}></script>
 <script src={{ asset('js/main.js') }}></script>
 <script src={{ asset('js/controllers/fornecedor/CriaFornecedor.js') }} type="module"></script>
 <script src={{ asset('js/controllers/fornecedor/ListFornecedor.js') }} type="module"></script>

@@ -1,8 +1,6 @@
 import { ApiData } from "../../services/ApiData.js";
 import { Util } from "../../util/formatacao.js";
 
-
-
 let formulario = $("#form");
 formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
