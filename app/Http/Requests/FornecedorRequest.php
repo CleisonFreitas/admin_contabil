@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 
 class FornecedorRequest extends Request
 {
@@ -23,15 +24,16 @@ class FornecedorRequest extends Request
     public function rules()
     {
         return [
-            'nm_fornecedor' => ['required','string'],
-            'nr_cnpj' => ['required']
+            'nm_fornecedor' => ['bail','required','string'],
+            'nr_cnpj' => ['bail','required','digits:14',Rule::unique('nr_cnpj')->ignore($this->fornecedor)->whereNull('deleted_at')]
         ];
     }
 
     public function attributes()
     {
         return [
-            'nm_fornecedor' => 'Nome do Fornecedor'
+            'nm_fornecedor' => 'Nome do Fornecedor',
+            'nr_cnpj' => 'CNPJ',
         ];
     }
 }
