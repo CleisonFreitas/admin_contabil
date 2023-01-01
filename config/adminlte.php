@@ -84,7 +84,7 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
@@ -130,7 +130,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -169,7 +169,7 @@ return [
 
     'classes_auth_card' => 'bg-purple text-light',
     'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-purple text-white',
+    'classes_auth_body' => 'bg-purple text-light',
     'classes_auth_footer' => 'text-center navbar-light',
     'classes_auth_icon' => 'fa-fw text-light',
     'classes_auth_btn' => 'btn-flat btn-light',
@@ -292,6 +292,11 @@ return [
     'menu' => [
         'ÁREA PRINCIPAL',
         [
+            'text' => 'Início',
+            'route' => 'home',
+            'icon' => 'fas fa-fw fa-home mx-1',
+        ],
+        [
             'text' => 'Dashboard',
             'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt mx-1',
@@ -300,6 +305,7 @@ return [
             'text' => 'Fornecedores',
             'route' => 'fornecedores',
             'icon' => 'fas fa-handshake mx-1',
+            'can' => 'view suppliers'
         ],
         [
             'text' => 'Plano de Contas',
@@ -334,6 +340,27 @@ return [
                     'url' => '/',
                     'classes' => 'mx-1',
                     'icon' => 'fas fa-poll-h mx-1'
+                ],
+            ]
+        ],
+        'CONFIGURAÇÕES',
+        [
+            'text' => 'Configurações',
+            'url' => '/',
+            'icon' => 'fas fa-cogs mx-1',
+            'submenu' => [
+                [
+                    'text' => 'Grupo de usuários',
+                    'route' => 'group-users',
+                    'classes' => 'mx-1',
+                    'icon' => 'fas fa-users mx-1',
+
+                ],
+                [
+                    'text' => 'Usuários',
+                    'route' => 'users',
+                    'classes' => 'mx-1',
+                    'icon' => 'fas fa-users-cog mx-1'
                 ],
             ]
         ],
@@ -410,22 +437,22 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'location' => '//cdn.jsdelivr.net/npm/chart.js',
                 ],
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'js/util/sweetalert2.all.min.js',
                 ],
             ],
         ],

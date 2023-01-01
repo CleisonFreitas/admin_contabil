@@ -345,7 +345,6 @@
 @stop
 
 @section('js')
-<script src={{ asset('js/util/sweetalert2.all.min.js') }}></script>
 <script src={{ asset('js/services/BuscaCep.js') }}></script>
 <script src={{ asset('js/main.js') }}></script>
 <script src={{ asset('js/controllers/fornecedor/CriaFornecedor.js') }} type="module"></script>

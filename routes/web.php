@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
-    return view('home');
+    return view('pages.dashboard.home');
 })->name('dashboard');
 
 Route::get('/customers', function () {
@@ -53,3 +53,11 @@ Route::get('/bills-planning', function () {
 Route::get('/customers/formulario/{id?}', function () {
     return view('pages.clientes.form_customers');
 })->name('form_customers');
+
+Route::get('/settings/users', function () {
+    return view('pages.gerenciador.usuario');
+})->name('users');
+
+Route::get('/settings/group-users', function () {
+    return view('pages.gerenciador.grupo-usuario');
+})->name('group-users');
