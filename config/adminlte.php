@@ -300,6 +300,7 @@ return [
             'text' => 'Dashboard',
             'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt mx-1',
+            'can' => 'view dashboard'
         ],
         [
             'text' => 'Fornecedores',
@@ -310,57 +311,70 @@ return [
         [
             'text' => 'Plano de Contas',
             'route' => 'plano-contas',
-            'icon' => 'fas fa-clipboard-list mx-1'
+            'icon' => 'fas fa-clipboard-list mx-1',
+            'can' => 'view account_plan'
         ],
         [
             'text' => 'Centro de Custo',
             'route' => 'centro-custo',
             'icon' => 'fas fa-sitemap mx-1',
+            'can' => 'view cost_center'
         ],
         [
             'text' => 'Formas de Pagamento',
             'route' => 'forma-pagamento',
             'icon' => 'fas fa-fw fa-credit-card mx-1',
+            'can' => 'view payment_way'
         ],
-        'ÁREA FINANCEIRA',
+        [
+            'header' => 'ÁREA FINANCEIRA',
+            'can' => 'view bill_to_pay'
+        ],
         [
             'text' => 'Financeiro',
             'url' => '/',
             'icon' => 'fas fa-fw fa-book mx-1',
+            'can' => 'view bill_to_pay',
             'submenu' => [
                 [
                     'text' => 'Contas a Pagar',
                     'route' => 'conta-pagar',
                     'classes' => 'mx-1',
                     'icon' => 'fas fa-file-invoice-dollar mx-1',
-
+                    'can' => 'view bill_to_pay'
                 ],
                 [
                     'text' => 'Relatório',
                     'url' => '/',
                     'classes' => 'mx-1',
-                    'icon' => 'fas fa-poll-h mx-1'
+                    'icon' => 'fas fa-poll-h mx-1',
+                    'can' => 'view bill_to_pay'
                 ],
             ]
         ],
-        'CONFIGURAÇÕES',
+        [
+            'header' => 'CONFIGURAÇÕES',
+            'can' => ['view user','view group_user']
+        ],
         [
             'text' => 'Configurações',
             'url' => '/',
             'icon' => 'fas fa-cogs mx-1',
+            'can' => 'view group_user',
             'submenu' => [
                 [
                     'text' => 'Grupo de usuários',
                     'route' => 'group-users',
                     'classes' => 'mx-1',
                     'icon' => 'fas fa-users mx-1',
-
+                    'can' => 'view group_user'
                 ],
                 [
                     'text' => 'Usuários',
                     'route' => 'users',
                     'classes' => 'mx-1',
-                    'icon' => 'fas fa-users-cog mx-1'
+                    'icon' => 'fas fa-users-cog mx-1',
+                    'can' => 'view user'
                 ],
             ]
         ],
