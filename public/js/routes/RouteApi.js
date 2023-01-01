@@ -1,7 +1,7 @@
 // ROTAS
 
 // Fornecedores
-const fornecedorURL = `http://localhost:8020/api/fornecedor`
+const fornecedorURL = window.location.origin+`/api/fornecedor`;
 
 
 export const RouteApi = {
