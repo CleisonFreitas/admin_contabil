@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\Gerenciador\GroupUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('fornecedor', FornecedorController::class);
+Route::apiResource('role',        GroupUserController::class);
+Route::post('role/{role}/permission/{permission}',                           [GroupUserController::class, 'givePermission']);
+Route::delete('role/{role}/permission/{permission}',                         [GroupUserController::class, 'revokePermission']);

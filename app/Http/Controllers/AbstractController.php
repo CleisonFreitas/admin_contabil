@@ -31,7 +31,7 @@ abstract class AbstractController extends Controller
     }
 
 
-    public function create($request)
+    protected function create($request)
     {
         try {
             $resource = $this->model::create($request->all());
@@ -48,7 +48,7 @@ abstract class AbstractController extends Controller
      * @param  \App\Models\Fornecedores\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function fetch(Model $model)
+    protected function fetch(Model $model)
     {
         try {
             return response()->json(['data' => $model], 200);
@@ -64,7 +64,7 @@ abstract class AbstractController extends Controller
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function up($request, Model $model)
+    protected function up($request, Model $model)
     {
         try {
             $model->update($request->all());
@@ -81,7 +81,7 @@ abstract class AbstractController extends Controller
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return \Illuminate\Http\Response
      */
-    public function delete(Model $model)
+    protected function delete(Model $model)
     {
         try {
             $model->delete();
