@@ -394,4 +394,8 @@
 @section('js')
     <script src={{ asset('js/main.js') }}></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        var base_url = window.location.origin+`/api/fornecedor`;
+        console.log(base_url)
+    </script>
 @stop
