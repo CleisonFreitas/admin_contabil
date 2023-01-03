@@ -8,7 +8,7 @@ tableContent.addEventListener("click", async (e) => {
     if (id !== undefined) {
         AdicionarRegistro()
 
-        const dados = await ApiData.GetData(RouteApi.fornecedorURL, id);
+        const dados = await ApiData.FetchData(RouteApi.fornecedorURL, id);
         $("#id").value = await dados.data.id;
         $("#nome").value = await dados.data.nm_fornecedor;
         $("#email").value = await dados.data.email;

@@ -282,7 +282,6 @@
                             </button>
                             <button
                                 type="reset"
-                                onclick="cancelarRegistro();"
                                 class="btn bg-navy btn-outline-light">
                                 <i class="fas fa-eraser mx-2"></i>
                                 Cancelar
@@ -360,7 +359,7 @@
 @section('js')
 <script src={{ asset('js/services/BuscaCep.js') }}></script>
 <script src={{ asset('js/main.js') }}></script>
-<script src={{ asset('js/controllers/fornecedor/CriaFornecedor.js') }} type="module"></script>
+<script src={{ asset('js/controllers/fornecedor/IncrementFornecedor.js') }} type="module"></script>
 <script src={{ asset('js/controllers/fornecedor/ListFornecedor.js') }} type="module"></script>
 <script src={{ asset('js/controllers/fornecedor/EditFornecedor.js') }} type="module"></script>
 @stop

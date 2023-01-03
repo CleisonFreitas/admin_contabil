@@ -1,5 +1,5 @@
 // Gerando mensagens de erro
-const ResultReturn = (result) => {
+const ResultReturn = (result,msg) => {
     if (result.errors) {
         Object.keys(result.errors).forEach(key => {
             // nome do campo console.log(key);
@@ -19,7 +19,7 @@ const ResultReturn = (result) => {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Registro realizado com sucesso!',
+            title: msg,
             showConfirmButton: false,
             timer: 1500
         })

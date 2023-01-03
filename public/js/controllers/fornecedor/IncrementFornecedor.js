@@ -8,6 +8,7 @@ formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const dados = {
+        id: $("#id").value,
         nm_fornecedor: $("#nome").value,
         email: $("#email").value,
         telefone: $("#telefone").value,
@@ -30,13 +31,20 @@ formulario.addEventListener("submit", async (e) => {
     $(".msg-erro--nr_cnpj").innerHTML = '';
     $(".msg-erro--nm_fornecedor").innerHTML = '';
 
-    const result = await ApiData.CreateData(RouteApi.fornecedorURL,dados);
-    Util.ResultReturn(result)
-
-    if (!result.errors)
-        formulario.reset();
+    await execData(dados);
 
 });
+
+async function execData(dados) {
+    if(dados.id !== "") {
+        const result = await ApiData.UpdateData(RouteApi.fornecedorURL,dados,dados.id);
+        return result
+    }else{
+        const result = await ApiData.CreateData(RouteApi.fornecedorURL,dados);
+        return result
+    }
+
+}
 
 
 
