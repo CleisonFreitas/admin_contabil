@@ -13,7 +13,7 @@ abstract class AbstractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function fetchAll(Request $request)
     {
         try {
             $query = $request->q ?? "";

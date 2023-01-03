@@ -1,22 +1,8 @@
 import { RouteApi } from "../../routes/RouteApi.js";
+import { ApiData } from "../../services/ApiData.js";
 
-const ListaFornecedor = async () => {
-    try {
-        const data = await fetch(RouteApi.fornecedorURL);
-        const response = await data.json();
-
-        const dados = {
-            data: response.data,
-            page: response.page,
-            last_item: response.last_item,
-            per_page: response.per_page,
-            total: response.total
-        }
-        return dados;
-    } catch (erro) {
-        return erro
-    }
-}
+const dados = await ApiData.FetchAllData(RouteApi.fornecedorURL);
+console.log(dados)
 
 function createTable(dados) {
     // Formulando tabela
@@ -58,6 +44,4 @@ function createTable(dados) {
     }
 }
 
-createTable(await ListaFornecedor());
-
-
+createTable(dados)

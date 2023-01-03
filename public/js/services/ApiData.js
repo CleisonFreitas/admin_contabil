@@ -1,5 +1,23 @@
 import { Util } from "../util/formatacao.js";
 
+const FetchAllData = async (url) => {
+    try {
+        const data = await fetch(url);
+        const response = await data.json();
+
+        const dados = {
+            data: response.data,
+            page: response.page,
+            last_item: response.last_item,
+            per_page: response.per_page,
+            total: response.total
+        }
+        return dados;
+    } catch (erro) {
+        return erro
+    }
+}
+
 const FetchData = async(url,id) => {
     try{
         const data = await fetch(url+`/${id}`);
@@ -50,6 +68,7 @@ const UpdateData = async(url,dados,id) => {
 }
 
 export const ApiData = {
+    FetchAllData,
     CreateData,
     FetchData,
     UpdateData

@@ -14,6 +14,16 @@ class FornecedorController extends AbstractController
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return $this->fetchAll($request);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Http\Requests\FornecedorRequest  $request
