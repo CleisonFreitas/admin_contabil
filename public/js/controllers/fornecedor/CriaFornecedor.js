@@ -1,7 +1,9 @@
+import { RouteApi } from "../../routes/RouteApi.js";
 import { ApiData } from "../../services/ApiData.js";
 import { Util } from "../../util/formatacao.js";
 
 let formulario = $("#form");
+
 formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -24,13 +26,18 @@ formulario.addEventListener("submit", async (e) => {
         observacao: $("#observacao").value,
     }
     // Limpando Cache de mensagens de erro.
+
     $(".msg-erro--nr_cnpj").innerHTML = '';
     $(".msg-erro--nm_fornecedor").innerHTML = '';
 
-    const result = await ApiData.CreateData(dados);
+    const result = await ApiData.CreateData(RouteApi.fornecedorURL,dados);
     Util.ResultReturn(result)
 
     if (!result.errors)
         formulario.reset();
 
 });
+
+
+
+

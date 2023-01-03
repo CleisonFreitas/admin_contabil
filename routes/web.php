@@ -30,7 +30,7 @@ Route::get('/customers', function () {
     return view('pages.clientes.customers');
 })->name('customers');
 
-Route::get('/suppliers', function () {
+Route::get('/suppliers/{id?}', function () {
     return view('pages.fornecedores.fornecedores');
 })->name('fornecedores');
 

@@ -21,7 +21,7 @@
 @section('content')
     <div class="container-fluid text-secondary pb-3">
         <div class="card card-invisible" id="content-card">
-            <div class="card-body" id="content-card">
+            <div class="card-body" >
                 <h4>Cadastro de Fornecedores</h4>
                 <hr>
                 <form id="form" class="form">
@@ -36,6 +36,19 @@
                       <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="geral" role="tabpanel" aria-labelledby="geral-tab">
                             <div class="row form-group">
+                                <div class="col-4 col-md-2 col-lg-2">
+                                    <label for="nome">ID</label>
+                                    <input
+                                        type="text"
+                                        name="nm_fornecedor"
+                                        id="id"
+                                        value=""
+                                        class="form-control input"
+                                        readonly
+                                    >
+                                </div>
+                            </div>
+                            <div class="row form-group">
                                 <div class="col-12 col-md-12 col-lg-12">
                                     <label for="nome">Nome*</label>
                                     <input
@@ -46,7 +59,7 @@
                                         class="form-control input"
                                         placeholder="Digite seu nome completo"
                                     >
-                                    <small class="text-danger msg-erro--nm_fornecedor"></small>
+                                    <small class="text-danger msg-erro msg-erro--nm_fornecedor"></small>
                                 </div>
                             </div>
 
@@ -61,7 +74,7 @@
                                         class="form-control"
                                         placeholder="Coloque apenas digitos"
                                     >
-                                    <small class="text-danger msg-erro--nr_cnpj mb-0"></small>
+                                    <small class="text-danger msg-erro msg-erro--nr_cnpj mb-0"></small>
                                 </div>
                                 <div class="col-12 col-md-3 col-lg-3 pt-2">
                                     <label for="cpf">CPF</label>

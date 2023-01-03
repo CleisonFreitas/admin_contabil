@@ -1,8 +1,18 @@
-import { RouteApi } from "../routes/RouteApi.js";
 
-const CreateData = async (dados) => {
+const GetData = async(url,id) => {
+    try{
+        const data = await fetch(url+`/${id}`);
+        const response = await data.json();
+
+        return response;
+    }catch(error) {
+        console.log(error)
+    }
+}
+
+const CreateData = async (url,dados) => {
     try {
-        const data = await fetch(RouteApi.fornecedorURL, {
+        const data = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,6 +26,18 @@ const CreateData = async (dados) => {
     }
 }
 
+const EditData = async(url,id) => {
+    try{
+        const data = await fetch(url+`/${id}`);
+        const response = await data.json();
+
+        return response;
+    }catch(error) {
+        console.log(error)
+    }
+}
+
 export const ApiData = {
-    CreateData
+    CreateData,
+    GetData
 }
