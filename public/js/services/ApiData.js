@@ -10,6 +10,8 @@ const FetchAllData = async (url) => {
             page: response.page,
             last_item: response.last_item,
             per_page: response.per_page,
+            prev_page_url: response.prev_page_url,
+            next_page_url: response.next_page_url,
             total: response.total
         }
         return dados;
@@ -38,7 +40,7 @@ const CreateData = async (url,dados) => {
             },
             body: JSON.stringify(dados),
         })
-        const response = data.json();
+        const response = await data.json();
 
         let msg = 'Registro realizado com sucesso!'
         Util.ResultReturn(response,msg)
@@ -59,7 +61,22 @@ const UpdateData = async(url,dados,id) => {
             body: JSON.stringify(dados)
         });
         const response = await data.json();
+
         let msg = 'Registro atualizado com sucesso!'
+        Util.ResultReturn(response,msg)
+
+        return response;
+    }catch(error) {
+        console.log(error)
+    }
+}
+
+const DeletaData = async(url,id) => {
+    try{
+        const data = await fetch(url+`/${id}`);
+        const response = await data.json();
+
+        let msg = 'Registro excluído com sucesso!'
         Util.ResultReturn(response,msg)
         return response;
     }catch(error) {

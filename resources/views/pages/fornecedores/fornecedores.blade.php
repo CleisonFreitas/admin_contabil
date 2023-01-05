@@ -11,7 +11,11 @@
                         <h4>Fornecedores</h4>
                     </div>
                     <div class="col-12 col-md-3 col-lg-3">
-                        <button class="btn bg-purple btn-outline-light flex justify-self-end" id="novo-cadastro"><i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro</button>
+                        <button class="btn bg-purple btn-outline-light flex justify-self-end"
+                            id="novo-cadastro">
+                            <i class="fas fa-plus-circle mx-2"></i>
+                            Adicionar novo registro
+                        </button>
                     </div>
                 </div>
             </div>
@@ -333,16 +337,21 @@
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Telefone</th>
-                                <th>Cep</th>
+                                <th>Celular</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody-content">
-
-                        </tbody>
+                        <tbody id="tbody-content"></tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="5">
+                                    <button class="btn btn-outline-light bg-navy"><i class="fas fa-step-backward mx-1"></i>Anterior</button>
+                                    <button class="btn btn-outline-light bg-navy">Próximo<i class="fas fa-step-forward my-1"></i></button>
+                                </th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 // Gerando mensagens de erro
 const ResultReturn = (result,msg) => {
+ //   return console.log(result)
     if (result.errors) {
         Object.keys(result.errors).forEach(key => {
             // nome do campo console.log(key);

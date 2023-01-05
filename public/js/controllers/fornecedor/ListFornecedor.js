@@ -1,8 +1,13 @@
 import { RouteApi } from "../../routes/RouteApi.js";
 import { ApiData } from "../../services/ApiData.js";
 
-const dados = await ApiData.FetchAllData(RouteApi.fornecedorURL);
-console.log(dados)
+let contentBody = $("#tbody-content");
+
+const UpdateData = async() => {
+    contentBody.innerHTML = ``;
+    const dados = await ApiData.FetchAllData(RouteApi.fornecedorURL);
+    createTable(dados)
+}
 
 function createTable(dados) {
     // Formulando tabela
@@ -16,12 +21,12 @@ function createTable(dados) {
         tableContent.removeChild(tableAvisoFornecedor);
         dados.data.forEach(item => {
             let contentTR = document.createElement("tr");
-            let contentBody = $("#tbody-content");
+
             let documento = `
-            <td>${item.nm_fornecedor}</td>
-            <td>${item.email}</td>
-            <td>${item.telefone}</td>
-            <td>${item.celular}</td>
+            <td data-${item.id}-name='fornecedor'>${item.nm_fornecedor}</td>
+            <td data-${item.id}-email='email'>${item.email}</td>
+            <td data-${item.id}-telefone='telefone'>${item.telefone}</td>
+            <td data-${item.id}-celular='celular'>${item.celular}</td>
             <td>
                 <button
                     class='btn btn-outline-light btn-sm bg-purple buttonEdit'
@@ -43,5 +48,10 @@ function createTable(dados) {
 
     }
 }
+(onload = () => {
+    UpdateData();
+})
 
-createTable(dados)
+export const ListFornecedor = {
+    UpdateData
+}

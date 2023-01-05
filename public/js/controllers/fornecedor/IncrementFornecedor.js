@@ -1,6 +1,6 @@
 import { RouteApi } from "../../routes/RouteApi.js";
 import { ApiData } from "../../services/ApiData.js";
-import { Util } from "../../util/formatacao.js";
+import { ListFornecedor } from "./ListFornecedor.js";
 
 let formulario = $("#form");
 
@@ -27,20 +27,33 @@ formulario.addEventListener("submit", async (e) => {
         observacao: $("#observacao").value,
     }
     // Limpando Cache de mensagens de erro.
-
     $(".msg-erro--nr_cnpj").innerHTML = '';
     $(".msg-erro--nm_fornecedor").innerHTML = '';
 
-    await execData(dados);
+    const result = await execData(dados);
+    if (!result.errors) {
+        if ($("#id").value == "") {
+            $("#id").value = result.data.id;
+        } else {
+            $(`[data-${result.data.id}-name=fornecedor]`).innerHTML = result.data.nm_fornecedor;
+            $(`[data-${result.data.id}-email=email]`).innerHTML = result.data.email;
+            $(`[data-${result.data.id}-telefone=telefone]`).innerHTML = result.data.telefone;
+            $(`[data-${result.data.id}-celular=celular]`).innerHTML = result.data.celular;
+        }
+
+    }
+
+
 
 });
 
 async function execData(dados) {
-    if(dados.id !== "") {
-        const result = await ApiData.UpdateData(RouteApi.fornecedorURL,dados,dados.id);
+    if (dados.id !== "") {
+        const result = await ApiData.UpdateData(RouteApi.fornecedorURL, dados, dados.id);
         return result
-    }else{
-        const result = await ApiData.CreateData(RouteApi.fornecedorURL,dados);
+    } else {
+        const result = await ApiData.CreateData(RouteApi.fornecedorURL, dados);
+        await ListFornecedor.UpdateData();
         return result
     }
 

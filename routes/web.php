@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Fornecedores\Fornecedor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::get('/customers', function () {
     return view('pages.clientes.customers');
 })->name('customers');
 
-Route::get('/suppliers/{id?}', function () {
+Route::get('/suppliers', function () {
     return view('pages.fornecedores.fornecedores');
 })->name('fornecedores');
 

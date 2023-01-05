@@ -44,6 +44,8 @@ class Fornecedor extends Model
             'page' => $resource->currentPage(),
             'per_page' => $resource->perPage(),
             'last_item' => $resource->lastItem(),
+            'prev_page_url' => $resource->previousPageUrl(),
+            'next_page_url' => $resource->nextPageUrl(),
             'total' => $resource->total()
         ];
     }
