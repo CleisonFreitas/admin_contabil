@@ -71,9 +71,11 @@ const UpdateData = async(url,dados,id) => {
     }
 }
 
-const DeletaData = async(url,id) => {
+const DeleteData = async(url,id) => {
     try{
-        const data = await fetch(url+`/${id}`);
+        const data = await fetch(url+`/${id}`, {
+            method: 'DELETE'
+        });
         const response = await data.json();
 
         let msg = 'Registro excluído com sucesso!'
@@ -88,5 +90,6 @@ export const ApiData = {
     FetchAllData,
     CreateData,
     FetchData,
-    UpdateData
+    UpdateData,
+    DeleteData
 }

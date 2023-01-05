@@ -6,8 +6,9 @@ let newRegistro = $("#novo-cadastro");
 const AdicionarRegistro = () => {
     contentHide.classList.toggle('card-invisible')
     tabela.classList.toggle('card-invisible')
+    console.log(newRegistro.innerText);
     newRegistro.innerHTML =
-        newRegistro.innerHTML == '<i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro' ? `<i class="fas fa-list mx-2"></i> Listagem de registros` : `<i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro`;
+        newRegistro.innerText == 'Adicionar novo registro' ? `<i class="fas fa-list mx-2"></i>Listagem de registros` : `<i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro`;
 
 };
 

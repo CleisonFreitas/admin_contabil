@@ -13,8 +13,7 @@
                     <div class="col-12 col-md-3 col-lg-3">
                         <button class="btn bg-purple btn-outline-light flex justify-self-end"
                             id="novo-cadastro">
-                            <i class="fas fa-plus-circle mx-2"></i>
-                            Adicionar novo registro
+                            <i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro
                         </button>
                     </div>
                 </div>

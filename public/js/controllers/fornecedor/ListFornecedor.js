@@ -23,10 +23,10 @@ function createTable(dados) {
             let contentTR = document.createElement("tr");
             contentTR.className = `data-id-${item.id}`
             let documento = `
-            <td data-${item.id}-name='fornecedor'>${item.nm_fornecedor}</td>
-            <td data-${item.id}-email='email'>${item.email}</td>
-            <td data-${item.id}-telefone='telefone'>${item.telefone}</td>
-            <td data-${item.id}-celular='celular'>${item.celular}</td>
+            <td data-${item.id}-name='fornecedor'>${item.nm_fornecedor ?? ""}</td>
+            <td data-${item.id}-email='email'>${item.email ?? ""}</td>
+            <td data-${item.id}-telefone='telefone'>${item.telefone ?? ""}</td>
+            <td data-${item.id}-celular='celular'>${item.celular ?? ""}</td>
             <td>
             <div class="btn-group">
                 <div class="btn-group dropleft" role="group">

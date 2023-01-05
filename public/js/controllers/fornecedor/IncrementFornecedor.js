@@ -34,6 +34,7 @@ formulario.addEventListener("submit", async (e) => {
     if (!result.errors) {
         if ($("#id").value == "") {
             $("#id").value = result.data.id;
+            await ListFornecedor.UpdateData();
         } else {
             $(`[data-${result.data.id}-name=fornecedor]`).innerHTML = result.data.nm_fornecedor;
             $(`[data-${result.data.id}-email=email]`).innerHTML = result.data.email;
@@ -53,7 +54,6 @@ async function execData(dados) {
         return result
     } else {
         const result = await ApiData.CreateData(RouteApi.fornecedorURL, dados);
-        await ListFornecedor.UpdateData();
         return result
     }
 
