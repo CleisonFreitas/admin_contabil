@@ -331,8 +331,8 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-sm table-striped">
-                        <thead class="text-purple">
+                    <table class="table table-bordered">
+                        <thead class="bg-purple ">
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
@@ -371,4 +371,5 @@
 <script src={{ asset('js/controllers/fornecedor/IncrementFornecedor.js') }} type="module"></script>
 <script src={{ asset('js/controllers/fornecedor/ListFornecedor.js') }} type="module"></script>
 <script src={{ asset('js/controllers/fornecedor/EditFornecedor.js') }} type="module"></script>
+<script src={{ asset('js/controllers/fornecedor/DeleteFornecedor.js') }} type="module"></script>
 @stop

@@ -4,11 +4,11 @@ import { ApiData } from "../../services/ApiData.js";
 let tableContent = $("#tbody-content");
 
 tableContent.addEventListener("click", async (e) => {
-    let id = e.target.value;
-    if (id !== undefined) {
+    let id = e.target;
+    if (id.value !== undefined && id.value !== "" && id.classList.contains("btnEdit")) {
         AdicionarRegistro()
 
-        const dados = await ApiData.FetchData(RouteApi.fornecedorURL, id);
+        const dados = await ApiData.FetchData(RouteApi.fornecedorURL, id.value);
         $("#id").value = await dados.data.id;
         $("#nome").value = await dados.data.nm_fornecedor;
         $("#email").value = await dados.data.email;

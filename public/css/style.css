@@ -46,3 +46,10 @@ tbody {
 .card-invisible {
     display:none;
 }
+
+
+/* Efeitos */
+.fadeOut {
+    opacity: 0;
+    transition: 0.5s;
+}
