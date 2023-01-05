@@ -77,9 +77,6 @@ const DeleteData = async(url,id) => {
             method: 'DELETE'
         });
         const response = await data.json();
-
-        let msg = 'Registro excluído com sucesso!'
-        Util.ResultReturn(response,msg)
         return response;
     }catch(error) {
         console.log(error)
