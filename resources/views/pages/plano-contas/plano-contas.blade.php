@@ -5,27 +5,16 @@
 @section('content_header')
 <div class="container-fluid">
     <div class="card">
-        <div class="card-body shadow">
-            <h4 class="text-info bg-light pt-2 pb-2 px-2">Plano de Contas</h4>
-            <hr>
-            <div class="form-group row pt-2">
-                <div class="col-12 col-md-3 col-lg-3">
-                    <button class="btn btn-outline-info mb-2" id="novo-cadastro" onclick="adicionarRegistro();"><i class="fas fa-plus-circle mx-2"></i>Inserir novo registro</button>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-9 col-lg-9">
+                    <h4>Plano de Contas</h4>
                 </div>
-                <div class="col-12 col-md-8 col-lg-8">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-navy" id="search_label"><i class="fas fa-search text-white"></i></span>
-                        </div>
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Pesquisar por grupo/conta..."
-                            aria-label="Pesquisar por grupo/conta..."
-                            aria-describedby="search_label"
-                            autofocus
-                        >
-                    </div>
+                <div class="col-12 col-md-3 col-lg-3">
+                    <button class="btn bg-purple btn-outline-light flex justify-self-end"
+                        id="novo-cadastro">
+                        <i class="fas fa-plus-circle mx-2"></i>Adicionar novo registro
+                    </button>
                 </div>
             </div>
         </div>
@@ -34,50 +23,47 @@
 @stop
 
 @section('content')
-<div class="container-fluid mb-3">
+<div class="container-fluid text-secondary pb-3">
     <div class="card card-invisible" id="content-card">
-        <div class="card-header">
-            <h4>Plano de Contas</h4>
-        </div>
         <div class="card-body">
-            <form>
+            <h4>Plano de Contas</h4>
+            <hr>
+            <form id="form" class="form">
+                <div class="form-group row">
+                    <div class="col-8 col-sm-3 col-lg-2">
+                        <label for="id">ID</label>
+                        <input
+                            type="text"
+                            name="id"
+                            id="id"
+                            class="form-control"
+                            readonly
+                        >
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-12 col-md-9 col-lg-9">
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome*</label>
                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Descrição...">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-12 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-6 col-lg-4">
                         <label for="tipo">Tipo</label>
                         <select
                             name="tipo"
-                            id="tipo"
+                            id="hierarquia"
                             class="custom-select"
-                            >
-                                <option value="receitas">Receita</option>
-                                <option value="despesa">Despesa</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-4">
-                        <label for="hierarquia">Hierarquia</label>
-                        <select
-                        name="hierarquia"
-                        id="hierarquia"
-                        class="custom-select"
-                        onchange="HandleGrupo();"
+                            onchange="HandleGrupo();"
                         >
                             <option value="grupo">Grupo</option>
                             <option value="conta">Conta</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="form-group row grupo-hidden " id="grupo">
-                    <div class="col-12 col-md-4 col-lg-4">
-                        <label for="pertence">Pertence à</label>
-                        <select name="pertence" id="pertence" class="custom-select">
+                    <div class="col-12 col-sm-6 col-lg-4 grupo-hidden" id="grupo">
+                        <label for="grupo">Grupo*</label>
+                        <select name="grupo" id="grupo" class="custom-select">
                             <option>Escolha um grupo</option>
                             <option value="#">Grupo 1</option>
                             <option value="#">Grupo 2</option>
@@ -86,24 +72,82 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col-12 col-md-4 col-lg-4 pt-1">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
                         <button
                             type="submit"
-                            class="btn btn-outline-success">
+                            class="btn bg-purple btn-outline-light">
                             <i class="fas fa-save mx-2"></i>
                             Salvar
                         </button>
                         <button
                             type="reset"
-                            onclick="cancelarRegistro();"
-                            class="btn btn-outline-danger">
+                            class="btn bg-navy btn-outline-light">
                             <i class="fas fa-eraser mx-2"></i>
                             Cancelar
                         </button>
                     </div>
                 </div>
+
             </form>
+        </div>
+    </div>
+
+    <!-- Plano de Contas -->
+    <div class="card" id="table-card">
+        <div class="card-body" id="table-content">
+            <h4>Lista de grupos</h4>
+            <hr>
+            <div class="form-group row">
+                <div class="col-12 col-sm-6 col-lg-6">
+                    <input
+                        type="text"
+                        name=""
+                        id="buscaConteudo"
+                        class="form-control"
+                        placeholder="Digite o nome do fornecedor..."
+                    >
+                </div>
+                <div class="col-6 col-sm-3 col-lg-3">
+                    <input
+                        type="date"
+                        name=""
+                        id=""
+                        class="form-control"
+                    >
+                </div>
+                <div class="col-6 col-sm-3 col-lg-3">
+                    <input
+                        type="date"
+                        name=""
+                        id=""
+                        class="form-control"
+                    >
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="bg-purple ">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Celular</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-content"></tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                <button class="btn btn-outline-light bg-navy"><i class="fas fa-step-backward mx-1"></i>Anterior</button>
+                                <button class="btn btn-outline-light bg-navy">Próximo<i class="fas fa-step-forward my-1"></i></button>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
 </div>

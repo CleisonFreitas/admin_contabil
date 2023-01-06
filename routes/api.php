@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CentroCustosController;
+use App\Http\Controllers\FormasPagamentoController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\Gerenciador\GroupUserController;
 use Illuminate\Http\Request;
@@ -20,7 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('fornecedor', FornecedorController::class);
-Route::apiResource('role',        GroupUserController::class);
+Route::apiResource('grupo-usuario',     GroupUserController::class);
+Route::apiResource('formas-pagamento',  FormasPagamentoController::class);
+Route::apiResource('centro-custo',      CentroCustosController::class);
+Route::apiResource('fornecedor',        FornecedorController::class);
+Route::apiResource('role',              GroupUserController::class);
 Route::post('role/{role}/permission/{permission}',                           [GroupUserController::class, 'givePermission']);
 Route::delete('role/{role}/permission/{permission}',                         [GroupUserController::class, 'revokePermission']);
