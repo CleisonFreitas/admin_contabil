@@ -19,7 +19,8 @@ class FormasPagamentoController extends AbstractController
      */
     public function index(Request $request)
     {
-        return $this->fetchAll($request);
+        $baseModel = new FormasPagamento();
+        return $this->fetchAll($request,$baseModel);
     }
 
     /**
@@ -64,6 +65,6 @@ class FormasPagamentoController extends AbstractController
      */
     public function destroy(FormasPagamento $formasPagamento)
     {
-        //
+        return $this->delete($formasPagamento);
     }
 }

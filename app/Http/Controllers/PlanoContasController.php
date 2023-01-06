@@ -19,7 +19,8 @@ class PlanoContasController extends AbstractController
      */
     public function index(Request $request)
     {
-        return $this->fetchAll($request);
+        $baseModel = new PlanoContas();
+        return $this->fetchAll($request,$baseModel);
     }
 
     /**

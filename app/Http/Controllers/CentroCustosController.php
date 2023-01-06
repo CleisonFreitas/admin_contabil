@@ -19,7 +19,8 @@ class CentroCustosController extends AbstractController
      */
     public function index(Request $request)
     {
-        return $this->fetchAll($request);
+        $baseModel = new CentroCustos();
+        return $this->fetchAll($request,$baseModel);
     }
 
     /**
