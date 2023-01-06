@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -13,16 +14,16 @@ abstract class AbstractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fetchAll(Request $request)
+    public function fetchAll(Request $request,$baseModel)
     {
         try {
-            $query = $request->q ?? "";
+            $terms = $this->getFields($request->q ?? "",$baseModel);
             $page = $request->page ?? 1;
             $per_page = $request->per_page ?? 10;
             $sort = $request->sort ?? 'id';
             $order = $request->order ?? 'desc';
 
-            $resource = $this->model::listAll($query, $page, $per_page, $sort, $order);
+            $resource = $this->model::fetchAll($terms, $page, $per_page, $sort, $order, $baseModel);
 
             return response()->json($resource, 200);
         } catch (\Exception $ex) {
@@ -87,7 +88,7 @@ abstract class AbstractController extends Controller
             $model->delete();
             return response()->json(['data' => $model], 200);
         } catch (\Exception $ex) {
-            return $this->respondWithErrors($ex);
+            return response()->json(['error' => $ex->getMessage()], 204);
         }
     }
 
@@ -119,6 +120,20 @@ abstract class AbstractController extends Controller
                     'message' => "Estamos com algum instabilidade no momento. Tente novamente em instantes.",
                 ]], 500);
                 break;
+        }
+    }
+
+    protected function getFields($term = "", $model)
+    {
+        if ($term !== null) {
+            $table = $model->getTable();
+
+            $modelFillable = "";
+            foreach ($model->getFillable() as $key => $attribute) {
+                $modelFillable = $modelFillable . "$table.$attribute like '%$term%' or ";
+            }
+            $modelFillable = rtrim($modelFillable, 'or ');
+            return $modelFillable;
         }
     }
 }

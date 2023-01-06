@@ -20,7 +20,8 @@ class FornecedorController extends AbstractController
      */
     public function index(Request $request)
     {
-        return $this->fetchAll($request);
+        $baseModel = new Fornecedor();
+        return $this->fetchAll($request,$baseModel);
     }
 
     /**

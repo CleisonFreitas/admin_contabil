@@ -2,11 +2,12 @@
 
 namespace App\Models\Fornecedores;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Fornecedor extends Model
+class Fornecedor extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
