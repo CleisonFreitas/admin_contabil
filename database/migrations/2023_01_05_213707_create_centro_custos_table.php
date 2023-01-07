@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('centro_custos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome')->comment('Nome do centro de custos');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

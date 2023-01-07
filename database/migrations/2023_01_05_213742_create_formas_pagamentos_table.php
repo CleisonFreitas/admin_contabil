@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('formas_pagamentos', function (Blueprint $table) {
+        Schema::create('formas_pagamento', function (Blueprint $table) {
             $table->id();
+            $table->string('nome')->comment('Nome da forma de pagamento');
+            $table->char('tipo',1)->comment('Tipo de pagamento');
+            $table->tinyInteger('quantidade')->comment('quantidade de parcelas')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
