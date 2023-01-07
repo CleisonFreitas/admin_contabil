@@ -24,13 +24,12 @@ abstract class BaseModel extends Model
         );
     }
 
-    static function fetchAll($terms = "", $page, $per_page, $sort, $order, $st_date, $end_date, $baseModel)
+    static function fetchAll($terms = "", $page, $per_page, $sort, $order, $baseModel)
     {
         $resource = $baseModel::OrderBy($sort, $order)
             ->where(function ($query) use ($terms) {
                 return $query->WhereRaw($terms);
             })
-            ->WhereBetween('created_at',[$st_date,$end_date])
             ->paginate($per_page, ['*'], 'page', $page);
 
         return [

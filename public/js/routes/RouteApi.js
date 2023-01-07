@@ -1,9 +1,15 @@
 // ROTAS
 
-// Fornecedores
 const fornecedorURL = window.location.origin+`/api/fornecedor`;
-
+const planocontasURL = window.location.origin+`/api/plano-contas`;
+const centrocustoURL = window.location.origin+`/api/centro-custo`;
+const grupousuarioURL = window.location.origin+`/api/role`;
+const formaspagamentoURL = window.location.origin+`/api/formas-pagamento`;
 
 export const RouteApi = {
-    fornecedorURL
+    fornecedorURL,
+    planocontasURL,
+    centrocustoURL,
+    grupousuarioURL,
+    formaspagamentoURL
 }

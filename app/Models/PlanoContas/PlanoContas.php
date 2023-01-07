@@ -20,5 +20,12 @@ class PlanoContas extends BaseModel
         'owner_id'
     ];
 
+    protected $with = ['owner'];
+
     public $timestamps = true;
+
+    public function owner()
+    {
+        return $this->belongsTo(PlanoContas::class,'owner_id');
+    }
 }

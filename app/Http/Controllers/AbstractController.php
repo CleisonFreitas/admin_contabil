@@ -14,16 +14,14 @@ abstract class AbstractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fetchAll(Request $request,$baseModel)
+    public function fetchAll(Request $request, $baseModel)
     {
         try {
-            $terms = $this->getFields($request->q ?? "",$baseModel);
+            $terms = $this->getFields($request->q ?? "", $baseModel);
             $page = $request->page ?? 1;
             $per_page = $request->per_page ?? 10;
             $sort = $request->sort ?? 'id';
             $order = $request->order ?? 'desc';
-            $st_date = $request->st_date ?? "";
-            $end_date = $request->end_date ?? "";
 
             $resource = $this->model::fetchAll(
                 $terms,
@@ -31,9 +29,8 @@ abstract class AbstractController extends Controller
                 $per_page,
                 $sort,
                 $order,
-                $st_date,
-                $end_date,
-                $baseModel);
+                $baseModel
+            );
 
             return response()->json($resource, 200);
         } catch (\Exception $ex) {

@@ -102,64 +102,61 @@
     <div class="card" id="table-card">
         <div class="card-body" id="table-content">
             <h4>Gerenciamento de contas</h4>
-            <div class="itens-paginate">
-                <div class="form-group row mx-1">
-                    <label for="registros"
-                        class="col-form-label">Exibir:
-                    </label>
-                    <div class="col-4 col-sm-2 col-lg-1">
-                        <input type="number"
-                            class="form-control form-control-sm mt-1"
-                            id="registros"
-                            value=10>
-                    </div>
-                    <label for="registros" class="col-form-label ">registros</label>
-                    <hr>
 
-                    <label for="ir"
-                        class="col-form-label mx-1">Ir para:
-                    </label>
-                    <div class="col-4 col-sm-5 col-lg-3 mt-1">
-                        <button
-                            class="btn btn-outline-secondary btn-sm">
-                            <i class="fas fa-step-backward mx-1"></i>Anterior
-                        </button>
-                        <button
-                            class="btn btn-outline-secondary btn-sm">
-                            Próximo<i class="fas fa-step-forward my-1"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
             <hr>
-            <div class="form-group row">
-                <div class="col-12 col-sm-4 col-lg-4">
-                    <input
-                        type="text"
-                        name=""
-                        id="buscaConteudo"
-                        class="form-control"
-                        placeholder="Digite o nome do grupo ou conta..."
-                    >
-                </div>
-                <div class="col-6 col-sm-4 col-lg-3">
-                    <input
-                        type="date"
-                        name=""
-                        id=""
-                        class="form-control"
-                    >
-                </div>
-                <div class="col-6 col-sm-4 col-lg-3">
-                    <input
-                        type="date"
-                        name=""
-                        id=""
-                        class="form-control"
-                    >
-                </div>
 
-            </div>
+            <section id="pagination">
+                <form class="form-inline">
+                    <label class="sr-only"
+                        for="buscaConteudo">
+                        Pesquisa
+                    </label>
+                    <input type="text"
+                        class="form-control mb-2 mr-sm-2"
+                        id="buscaConteudo"
+                        placeholder="Digite para pesquisar...">
+
+                    <label
+                        for="exibir"
+                        class="mr-2 mb-2">Exibir:
+                    </label>
+                    <input
+                        type="number"
+                        class="form-control mb-2"
+                        id="exibir"
+                        value="10">
+
+                    <label
+                        for="classificacao"
+                        class="mr-2 mt-2 mb-3 ml-2">Ordenar:
+                    </label>
+                    <select
+                        name="classificacao"
+                        id="classificacao"
+                        class="custom-select mb-2">
+                        <option value="id">#</option>
+                        <option value="nome">Nome</option>
+                        <option value="id">Data</option>
+                    </select>
+                    <select
+                        name="ordem"
+                        id="ordem"
+                        class="custom-select mb-2">
+                        <option value="asc">Crescente</option>
+                        <option value="desc">Decrescente    </option>
+                    </select>
+
+                    <button
+                        class="btn btn-outline-secondary btn-sm mb-2 mx-1">
+                        <i class="fas fa-step-backward mx-1"></i>Anterior
+                    </button>
+                    <button
+                        class="btn btn-outline-secondary btn-sm mb-2 mx-1">
+                        Próximo<i class="fas fa-step-forward my-1"></i>
+                    </button>
+                  </form>
+
+            </section>
 
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -205,4 +202,5 @@
             );
         }
     </script>
+    <script src={{ asset('js/controllers/plano-contas/ListPlanoContas.js') }} type="module"></script>
 @endsection
