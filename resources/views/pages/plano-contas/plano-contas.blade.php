@@ -102,71 +102,17 @@
     <div class="card" id="table-card">
         <div class="card-body" id="table-content">
             <h4>Gerenciamento de contas</h4>
-
             <hr>
-
-            <section id="pagination">
-                <form class="form-inline">
-                    <label class="sr-only"
-                        for="buscaConteudo">
-                        Pesquisa
-                    </label>
-                    <input type="text"
-                        class="form-control mb-2 mr-sm-2"
-                        id="buscaConteudo"
-                        placeholder="Digite para pesquisar...">
-
-                    <label
-                        for="exibir"
-                        class="mr-2 mb-2">Exibir:
-                    </label>
-                    <input
-                        type="number"
-                        class="form-control mb-2"
-                        id="exibir"
-                        value="10">
-
-                    <label
-                        for="classificacao"
-                        class="mr-2 mt-2 mb-3 ml-2">Ordenar:
-                    </label>
-                    <select
-                        name="classificacao"
-                        id="classificacao"
-                        class="custom-select mb-2">
-                        <option value="id">#</option>
-                        <option value="nome">Nome</option>
-                        <option value="id">Data</option>
-                    </select>
-                    <select
-                        name="ordem"
-                        id="ordem"
-                        class="custom-select mb-2">
-                        <option value="asc">Crescente</option>
-                        <option value="desc">Decrescente    </option>
-                    </select>
-
-                    <button
-                        class="btn btn-outline-secondary btn-sm mb-2 mx-1">
-                        <i class="fas fa-step-backward mx-1"></i>Anterior
-                    </button>
-                    <button
-                        class="btn btn-outline-secondary btn-sm mb-2 mx-1">
-                        Próximo<i class="fas fa-step-forward my-1"></i>
-                    </button>
-                  </form>
-
-            </section>
-
+            <section id="pagination"></section>
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-striped text-bold">
                     <thead class="bg-purple ">
                         <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Tipo</th>
-                            <th>Pertence à</th>
-                            <th>Ações</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Pertence à</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody id="tbody-content"></tbody>

@@ -12,6 +12,7 @@ const FetchAllData = async (url) => {
             per_page: response.per_page,
             prev_page_url: response.prev_page_url,
             next_page_url: response.next_page_url,
+            last_page: response.last_page,
             total: response.total
         }
         return dados;

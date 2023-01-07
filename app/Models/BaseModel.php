@@ -39,6 +39,7 @@ abstract class BaseModel extends Model
             'last_item' => $resource->lastItem(),
             'prev_page_url' => $resource->previousPageUrl(),
             'next_page_url' => $resource->nextPageUrl(),
+            'last_page' => $resource->lastPage(),
             'total' => $resource->total()
         ];
     }
