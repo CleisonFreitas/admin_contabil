@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,12 +10,27 @@ abstract class BaseModel extends Model
 {
     use HasFactory;
 
-    static function fetchAll($terms = "", $page, $per_page, $sort, $order, $baseModel)
+    protected function CreatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Date('Y-m-d',strtotime($value)),
+        );
+    }
+
+    protected function UpdatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Date('Y-m-d',strtotime($value)),
+        );
+    }
+
+    static function fetchAll($terms = "", $page, $per_page, $sort, $order, $st_date, $end_date, $baseModel)
     {
         $resource = $baseModel::OrderBy($sort, $order)
             ->where(function ($query) use ($terms) {
                 return $query->WhereRaw($terms);
             })
+            ->WhereBetween('created_at',[$st_date,$end_date])
             ->paginate($per_page, ['*'], 'page', $page);
 
         return [

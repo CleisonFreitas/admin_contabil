@@ -22,8 +22,18 @@ abstract class AbstractController extends Controller
             $per_page = $request->per_page ?? 10;
             $sort = $request->sort ?? 'id';
             $order = $request->order ?? 'desc';
+            $st_date = $request->st_date ?? "";
+            $end_date = $request->end_date ?? "";
 
-            $resource = $this->model::fetchAll($terms, $page, $per_page, $sort, $order, $baseModel);
+            $resource = $this->model::fetchAll(
+                $terms,
+                $page,
+                $per_page,
+                $sort,
+                $order,
+                $st_date,
+                $end_date,
+                $baseModel);
 
             return response()->json($resource, 200);
         } catch (\Exception $ex) {
