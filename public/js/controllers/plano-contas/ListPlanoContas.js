@@ -30,13 +30,18 @@ function createTable(dados) {
 
     let lastPage = dados.last_page
     let totalPage = $("#total_page");
-
+    let current_page = dados.current_page;
+    totalPage.innerHTML = ``;
     for (let i = 1; i <= lastPage; i++) {
-        totalPage.innerHTML = ``;
         let pageOption = document.createElement('option');
-        pageOption.className = `page-${i}`
-        pageOption.innerHTML += i
-        totalPage.appendChild(pageOption)
+            pageOption.className = `page-${i}`
+            pageOption.innerHTML = i
+            totalPage.appendChild(pageOption)
+
+        if(pageOption.innerHTML == current_page) {
+            let optionAttribute = $(`.page-${current_page}`);
+            optionAttribute.setAttribute("selected", "selected");
+        }
     }
 
     if (dados.data.length > 0) {
@@ -93,7 +98,6 @@ function createTable(dados) {
 
     }
 }
-
 
 (onload = () => {
     UpdateData();

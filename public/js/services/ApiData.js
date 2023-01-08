@@ -7,6 +7,7 @@ const FetchAllData = async (url) => {
 
         const dados = {
             data: response.data,
+            current_page: response.current_page,
             page: response.page,
             last_item: response.last_item,
             per_page: response.per_page,

@@ -41,7 +41,7 @@ paginacao.innerHTML =
         </label>
         <input
             type="number"
-            class="custom-select mb-2"
+            class="form-control mb-2"
             id="per_page"
             value=10>
 

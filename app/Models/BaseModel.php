@@ -34,6 +34,7 @@ abstract class BaseModel extends Model
 
         return [
             'data' => $resource->items(),
+            'current_page' => $resource->currentPage(),
             'page' => $resource->currentPage(),
             'per_page' => $resource->perPage(),
             'last_item' => $resource->lastItem(),
