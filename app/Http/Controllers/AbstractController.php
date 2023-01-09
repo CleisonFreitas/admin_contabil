@@ -46,7 +46,7 @@ abstract class AbstractController extends Controller
 
             return response()->json(['data' => $resource], 201);
         } catch (\Exception $ex) {
-            return response()->json(['erros' => [$ex->getMessage()], 404]);
+            return response()->json(['errors' => [$ex->getMessage()]],404);
         }
     }
 

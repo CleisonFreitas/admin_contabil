@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('plano-contas/combo',      [PlanoContasController::class,'combo']);
+
 Route::apiResource('formas-pagamento',  FormasPagamentoController::class);
 Route::apiResource('centro-custo',      CentroCustosController::class);
 Route::apiResource('plano-contas',      PlanoContasController::class);

@@ -1,6 +1,6 @@
-
 import { RouteApi } from "../../routes/RouteApi.js";
 import { ApiData } from "../../services/ApiData.js";
+import { Util } from "../../util/formatacao.js";
 
 let contentBody = $("#tbody-content");
 let pagination = $("#pagination");
@@ -8,41 +8,25 @@ let pagination = $("#pagination");
 
 pagination.addEventListener('change', async () => Paginator());
 
-const Paginator = () => {
+const Paginator = async() => {
     let term = $("#buscaConteudo").value;
     let page = $("#total_page").value;
     let per_page = $("#per_page").value;
     let sort = $("#classificacao").value;
     let order = $("#ordem").value;
 
-    UpdateData(term, page, per_page, sort, order);
+    UpdateData(term, page, per_page, sort, order)
 
 }
 
 const UpdateData = async (term = "", page = 1, per_page = 10, sort = "id", order = 'desc') => {
     const dados = await ApiData.FetchAllData(RouteApi.planocontasURL + `?q=${term}&page=${page}&per_page=${per_page}&sort=${sort}&order=${order}`);
-    console.log(dados)
     createTable(dados)
 }
 
 function createTable(dados) {
     // Formulando tabela
-
-    let lastPage = dados.last_page
-    let totalPage = $("#total_page");
-    let current_page = dados.current_page;
-    totalPage.innerHTML = ``;
-    for (let i = 1; i <= lastPage; i++) {
-        let pageOption = document.createElement('option');
-            pageOption.className = `page-${i}`
-            pageOption.innerHTML = i
-            totalPage.appendChild(pageOption)
-
-        if(pageOption.innerHTML == current_page) {
-            let optionAttribute = $(`.page-${current_page}`);
-            optionAttribute.setAttribute("selected", "selected");
-        }
-    }
+    Util.Pagination(dados)
 
     if (dados.data.length > 0) {
         contentBody.innerHTML = ``;
@@ -54,7 +38,7 @@ function createTable(dados) {
                 <td data-${item.id}-id='id'>${item.id ?? ""}</td>
                 <td data-${item.id}-name='nome'>${item.nome ?? ""}</td>
                 <td data-${item.id}-tipo='tipo'>${item.tipo == 'G' ? 'Grupo' : 'Conta'}</td>
-                <td data-${item.id}-tipo='owner'>${owner ?? ""}</td>
+                <td data-${item.id}-owner='owner'>${owner ?? ""}</td>
                 <td>
                     <div class="btn-group">
                         <div class="btn-group dropleft" role="group">
@@ -102,3 +86,7 @@ function createTable(dados) {
 (onload = () => {
     UpdateData();
 })
+
+export const ListPlanoContas = {
+    UpdateData
+}

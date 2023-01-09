@@ -48,8 +48,8 @@ const CreateData = async (url,dados) => {
         Util.ResultReturn(response,msg)
 
         return response;
-    } catch (e) {
-        return e
+    } catch (erros) {
+        return erros
     }
 }
 
@@ -80,8 +80,8 @@ const DeleteData = async(url,id) => {
         });
         const response = await data.json();
         return response;
-    }catch(error) {
-        console.log(error)
+    }catch(errors) {
+        return errors
     }
 }
 

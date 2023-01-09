@@ -58,21 +58,18 @@
                         <label for="tipo">Tipo</label>
                         <select
                             name="tipo"
-                            id="hierarquia"
+                            id="tipo"
                             class="custom-select"
                             onchange="HandleGrupo();"
                         >
-                            <option value="grupo">Grupo</option>
-                            <option value="conta">Conta</option>
+                            <option value="G">Grupo</option>
+                            <option value="C">Conta</option>
                         </select>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-4 grupo-hidden" id="grupo">
-                        <label for="grupo">Grupo*</label>
-                        <select name="grupo" id="grupo" class="custom-select">
-                            <option>Escolha um grupo</option>
-                            <option value="#">Grupo 1</option>
-                            <option value="#">Grupo 2</option>
-                            <option value="#">Grupo 3</option>
+                    <div class="col-12 col-sm-6 col-lg-4" id="grupo">
+                        <label for="owner_id">Grupo*</label>
+                        <select name="owner_id" id="owner_id" class="custom-select">
+                            <option value="">Escolha um grupo</option>
                         </select>
                     </div>
                 </div>
@@ -134,19 +131,7 @@
 
 @section('js')
     <script src={{ asset('js/main.js') }}></script>
-    <script>
-        let hierarquia = $("#hierarquia");
-        let grupo = $("#grupo");
-        const HandleGrupo = () => {
-            if(hierarquia.value == 'conta'){
-                grupo.classList.remove('grupo-hidden')
-            }else{
-                grupo.classList.add('grupo-hidden')
-            }
-            return(
-                grupo
-            );
-        }
-    </script>
     <script src={{ asset('js/controllers/plano-contas/ListPlanoContas.js') }} type="module"></script>
+    <script src={{ asset('js/controllers/plano-contas/IncrementPlanoContas.js') }} type="module"></script>
+    <script src={{ asset('js/controllers/plano-contas/ComboPlanoContas.js') }} type="module"></script>
 @endsection

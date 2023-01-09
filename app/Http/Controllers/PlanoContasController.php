@@ -67,4 +67,15 @@ class PlanoContasController extends AbstractController
     {
         return $this->delete($planoContas);
     }
+
+    public function combo()
+    {
+        try{
+            $combo = PlanoContas::Where('tipo','G')->get();
+            echo json_encode($combo);die;
+            return response()->json(['data' => $combo],200);
+        }catch(\Exception $ex) {
+            return response()->json(['errors' => [$ex->getMessage()]],404);
+        }
+    }
 }
