@@ -28,12 +28,12 @@
                 <h4>Cadastro de Fornecedores</h4>
                 <hr>
                 <form id="form" class="form">
-                    <ul class="nav nav-tabs mb-3 nav-filter" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs mb-3 nav-filter" id="page-link" role="tablist">
                         <li class="nav-item" role="presentation">
-                          <button class="nav-link bg-navy active" onclick="changeGeral();" id="geral-tab" data-toggle="tab" data-target="#geral" type="button" role="tab" aria-controls="geral" aria-selected="true"><i class="fas fa-folder-open mx-1"></i>Geral</button>
+                          <button class="nav-link active" data-link="geral" id="geral-tab" data-toggle="tab" data-target="#geral" type="button" role="tab" aria-controls="geral" aria-selected="true"><i class="fas fa-folder-open mx-1"></i>Geral</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                          <button class="nav-link" onclick="changeAddress();" id="address-tab" data-toggle="tab" data-target="#address" type="button" role="tab" aria-controls="address" aria-selected="false"><i class="fas fa-map-marked mx-1"></i>Endereço</button>
+                          <button class="nav-link" id="address-tab" data-link="address" data-toggle="tab" data-target="#address" type="button" role="tab" aria-controls="address" aria-selected="false"><i class="fas fa-map-marked mx-1"></i>Endereço</button>
                         </li>
                       </ul>
                       <div class="tab-content" id="myTabContent">
