@@ -15,12 +15,15 @@
 
 @section('content')
     <section class="content_dashboard container-fluid">
-        <div class="jumbotron bg-navy">
-            <h1 class="display-4">Olá, Seja bem-vindo!</h1>
-            <p class="lead">As opções de acesso estão liberadas de acordo com a permissão de cada usuário</p>
-            <hr class="my-4 text-light">
-            <p><i class="fas fa-exclamation-circle mx-2"></i>Em caso de solicitação para nova liberação, permissão ou acesso, contate o administrador geral.</p>
-          </div>
+        <div class="card bg-white p-3">
+            <div class="jumbotron bg-light">
+                <h1 class="display-4">Olá, Seja bem-vindo!</h1>
+                <p class="lead">As opções de acesso estão liberadas de acordo com a permissão de cada usuário</p>
+                <hr class="my-4 text-light">
+                <p><i class="fas fa-exclamation-circle mx-2"></i>Em caso de solicitação para nova liberação, permissão ou acesso, contate o administrador geral.</p>
+              </div>
+        </div>
+
     </section>
 @stop
 
