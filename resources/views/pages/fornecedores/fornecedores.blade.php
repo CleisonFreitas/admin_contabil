@@ -301,33 +301,7 @@
             <div class="card-body" id="table-content">
                 <h4>Lista de fornecedores cadastrados</h4>
                 <hr>
-                <div class="form-group row">
-                    <div class="col-12 col-sm-6 col-lg-6">
-                        <input
-                            type="text"
-                            name=""
-                            id="buscaConteudo"
-                            class="form-control"
-                            placeholder="Digite o nome do fornecedor..."
-                        >
-                    </div>
-                    <div class="col-6 col-sm-3 col-lg-3">
-                        <input
-                            type="date"
-                            name=""
-                            id=""
-                            class="form-control"
-                        >
-                    </div>
-                    <div class="col-6 col-sm-3 col-lg-3">
-                        <input
-                            type="date"
-                            name=""
-                            id=""
-                            class="form-control"
-                        >
-                    </div>
-                </div>
+                <section id="pagination"></section>
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -341,14 +315,6 @@
                             </tr>
                         </thead>
                         <tbody id="tbody-content"></tbody>
-                        <tfoot>
-                            <tr>
-                                <th colspan="5">
-                                    <button class="btn btn-outline-light bg-navy"><i class="fas fa-step-backward mx-1"></i>Anterior</button>
-                                    <button class="btn btn-outline-light bg-navy">Próximo<i class="fas fa-step-forward my-1"></i></button>
-                                </th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
